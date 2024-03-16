@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-#lld 
+#lld
 set(CMAKE_EXE_LINKER_FLAGS -fuse-ld=lld)
 
 find_program(IWYU_PROGRAM NAMES include-what-you-use) # https://github.com/include-what-you-use/include-what-you-use
@@ -16,7 +16,7 @@ endif()
 
 #doxygen
 if (DOCS)
-    add_subdirectory(docs)
+  add_subdirectory(docs)
 endif()
 
 #  Functions
@@ -42,7 +42,7 @@ file(GLOB SOURCE_FILE src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILE})
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_compile_options(${PROJECT_NAME} PRIVATE Wall -Wextra -Wpedantic -fsanitize=address -fsanitize=undefined -fsanitize=thread -fPIE -pie -fno-omit-frame-pointer -g)
+target_compile_options(${PROJECT_NAME} PRIVATE Wall -Wextra -Wpedantic  -fsanitize=undefined -fsanitize=thread -fPIE -pie -fno-omit-frame-pointer -g)
 
 add_subdirectory(lib)
 
@@ -52,23 +52,23 @@ target_link_libraries(${PROJECT_NAME} lib)
 target_link_libraries(${PROJECT_NAME} glm::glm)
 target_link_libraries(${PROJECT_NAME} glfw)
 # boost
-if(NOT WIN32)
-  target_link_libraries(${PROJECT_NAME} boost::system pthread)
-else()
-  # Windows WIN32 API
-  target_link_libraries(${PROJECT_NAME} boost::system)
-endif()
+#if(NOT WIN32)
+#  target_link_libraries(${PROJECT_NAME} boost::system pthread)
+#else()
+# Windows WIN32 API
+#  target_link_libraries(${PROJECT_NAME} boost::system)
+#endif()
 
 
 #Use in graphics projects
 ############## Build SHADERS #######################
-find_program(GLSL_VALIDATOR glslangValidator HINTS 
-  ${Vulkan_GLSLANG_VALIDATOR_EXECUTABLE} 
-  /usr/bin 
-  /usr/local/bin 
+find_program(GLSL_VALIDATOR glslangValidator HINTS
+  ${Vulkan_GLSLANG_VALIDATOR_EXECUTABLE}
+  /usr/bin
+  /usr/local/bin
   ${VULKAN_SDK_PATH}/Bin
   ${VULKAN_SDK_PATH}/Bin32
-  $ENV{VULKAN_SDK}/Bin/ 
+  $ENV{VULKAN_SDK}/Bin/
   $ENV{VULKAN_SDK}/Bin32/
 )
 
