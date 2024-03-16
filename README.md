@@ -29,7 +29,7 @@ Structure:
 └── README.md
 ```
 
-I use [conan](https://conan.io/) for pm, [cmake](https://cmake.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and [doxygen](https://www.doxygen.nl/manual/index.html). It can be used for graphics project.
+I use [conan](https://conan.io/) for pm, [cmake](https://cmake.org/) for generator files for [ninja-build](https://ninja-build.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for format and [doxygen](https://www.doxygen.nl/manual/index.html) for generate docs. It can be used for graphics project.
 
 ---
 This template contains a script to install everything you need
