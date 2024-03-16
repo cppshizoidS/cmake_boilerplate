@@ -31,7 +31,7 @@ jobs:
       run: |
         mkdir build && cd build
         cmake ..
-        cmake --build .
+        cmake --build . --update --build missing
 
     - name: Run tests
       run: |
@@ -54,7 +54,7 @@ jobs:
 
     - name: Install dependencies with Conan
       run: |
-        conan install .
+        conan install . --update --build missing
 
     - name: Configure and build
       run: |
