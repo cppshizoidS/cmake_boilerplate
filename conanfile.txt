@@ -12,7 +12,7 @@ fmt/10.2.1
 gtest/1.14.0
 poco/1.13.2
 
-drogon/1.9.3
+drogon/1.9.2
 crowcpp-crow/1.1.0
 
 glad/0.1.36
