@@ -21,7 +21,7 @@ endif()
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fsanitize=undefined -fsanitize=undefined -fsanitize=undefined -fPIE -pie -fno-omit-frame-pointer -g)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
 endif()
 
 #  Functions
