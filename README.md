@@ -30,4 +30,6 @@ Structure:
 ```
 
 I use [conan](https://conan.io/) for pm, [cmake](https://cmake.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and [doxygen](https://www.doxygen.nl/manual/index.html). It can be used for graphics project.
+
+---
 This template contains a script to install everything you need
