@@ -1,5 +1,4 @@
 #!/bin/bash
-# Проверка типа дистрибутива
 if [ -x "$(command -v apt-get)" ]; then
     sudo apt-get update
     sudo apt-get install -y build-essential neofetch git clang clang-tools clang-format gcc cmake ninja-build lld lldb valgrind gtest python3-pip doxygen neovim qt5-default qtbase5-dev qt6-base-dev qt6-base glfw glew libglm-dev glew-utils libglew-dev vulkan-tools vulkan-utils vulkan-loader glslang-dev spirv-tools
