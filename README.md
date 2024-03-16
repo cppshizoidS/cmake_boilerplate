@@ -1,7 +1,9 @@
-My boilerplate for cmake projects with ci/cd
+# My boilerplate for cmake projects with ci/cd
 
 Structure:
+
 ```sh
+.
 ├── .github/workflows
 ├── docs
 │   └── CMakeLists.txt
