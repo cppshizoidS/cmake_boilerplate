@@ -1,0 +1,68 @@
+name: C++ CI/CD with Conan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Conan
+      run: |
+        pip install conan
+        conan --version
+
+    - name: Install dependencies with Conan
+      run: |
+        conan install .
+
+    - name: Configure and build
+      run: |
+        mkdir build && cd build
+        cmake ..
+        cmake --build .
+
+    - name: Run tests
+      run: |
+        ctest
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Conan
+      run: |
+        pip install conan
+        conan --version
+
+    - name: Install dependencies with Conan
+      run: |
+        conan install .
+
+    - name: Configure and build
+      run: |
+        mkdir build && cd build
+        cmake ..
+        cmake --build .
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: executables
+        path: build/${PROJECT_NAME}
