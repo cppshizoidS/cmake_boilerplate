@@ -6,6 +6,10 @@
 ├── include
 │   └── *.hpp
 ├── lib
+|   ├── include
+│       └── *.hpp
+|   ├── src
+|       └── *.cpp
 |   └── CMakeLists.txt
 │── shaders(for graphics project)
 │   └── *.frag/.vert
