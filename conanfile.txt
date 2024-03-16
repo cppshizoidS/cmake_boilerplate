@@ -13,6 +13,7 @@ gtest/1.14.0
 poco/1.13.2
 
 drogon/1.9.3
+crowcpp-crow/1.1.0
 
 glad/0.1.36
 glew/2.2.0
