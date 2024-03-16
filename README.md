@@ -29,4 +29,4 @@ Structure:
 └── README.md
 ```
 
-I use [conan](https://conan.io/) for pm, cmake, clang-format and doxygen. It can be used for project for graphics.
+I use [conan](https://conan.io/) for pm, [cmake](https://cmake.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and [doxygen](https://www.doxygen.nl/manual/index.html). It can be used for project for graphics.
