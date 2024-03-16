@@ -24,6 +24,7 @@ jobs:
 
     - name: Install dependencies with Conan
       run: |
+        conan profile detect
         conan install .
 
     - name: Configure and build
