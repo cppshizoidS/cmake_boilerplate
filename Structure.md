@@ -3,6 +3,8 @@
 ├── docs
 │   └── CMakeLists.txt
 │   └── Doxyfile.in  
+│   img
+|   └── ... (image files)
 ├── include
 │   └── *.hpp
 ├── lib
@@ -11,8 +13,8 @@
 |   ├── src
 |       └── *.cpp
 |   └── CMakeLists.txt
-│── shaders(for graphics project)
-│   └── *.frag/.vert
+│── res(resources for qt project)
+│   └── *.qrc
 ├── src
 │   └── *.cpp
 ├── .clang-format
