@@ -24,6 +24,17 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
 endif()
 
+# release
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT result)
+    if(result)
+        set_target_properties(${PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(WARNING "IPO is not supported: ${result}")
+    endif()
+endif()
+
 #  Functions
 function(copy_after_build TARGET_NAME)
   set(DESTDIR ${CMAKE_CURRENT_LIST_DIR}/bin/)
