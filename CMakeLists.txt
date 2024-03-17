@@ -4,6 +4,10 @@ project(${PROJECT_NAME} LANGUAGES CXX) #change ${PROJECT_NAME} to actual projet 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #lld
@@ -21,7 +25,7 @@ endif()
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
+  target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
 endif()
 
 #  Functions
@@ -35,18 +39,27 @@ function(copy_after_build TARGET_NAME)
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}> ${DESTDIR})
 endfunction()
 
+#change to actu path
+set(CMAKE_PREFIX_PATH "/home/cppshizoid/*/*/*/*/*/*")
 
-# Find Packages conan
-find_package(Boost)
-#graphics
-find_package(glfw3)
-find_package(glm)
-find_package(glew)
-find_package(imgui)
+find_package(Qt6 COMPONENTS
+        Core
+        Gui
+        Widgets
+        REQUIRED)
+
+# qml and images
+qt_add_qml_module(myapp
+    URI hello
+    QML_FILES
+        main.qml
+    RESOURCES
+        img/world.png
+)
 
 #Target Configurations
 file(GLOB SOURCE_FILE src/*.cpp)
-add_executable(${PROJECT_NAME} ${SOURCE_FILE})
+add_executable(${PROJECT_NAME} ${SOURCE_FILE} app.qrc)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 
@@ -55,49 +68,8 @@ add_subdirectory(lib)
 # Link  main project with the library
 target_link_libraries(${PROJECT_NAME} lib)
 # Link libs with target
-target_link_libraries(${PROJECT_NAME} glm::glm)
-target_link_libraries(${PROJECT_NAME} glfw)
-target_link_libraries(${PROJECT_NAME} GLEW::GLEW)
-target_link_libraries(${PROJECT_NAME} imgui::imgui)
-
-# boost
-#if(NOT WIN32)
-#  target_link_libraries(${PROJECT_NAME} boost::system pthread)
-#else()
-# Windows WIN32 API
-#  target_link_libraries(${PROJECT_NAME} boost::system)
-#endif()
-
-
-#Use in graphics projects
-############## Build SHADERS #######################
-find_program(GLSL_VALIDATOR glslangValidator HINTS
-  ${Vulkan_GLSLANG_VALIDATOR_EXECUTABLE}
-  /usr/bin
-  /usr/local/bin
-  ${VULKAN_SDK_PATH}/Bin
-  ${VULKAN_SDK_PATH}/Bin32
-  $ENV{VULKAN_SDK}/Bin/
-  $ENV{VULKAN_SDK}/Bin32/
-)
-
-# get all .vert and .frag files in shaders directory
-file(GLOB_RECURSE GLSL_SOURCE_FILES
-  "${PROJECT_SOURCE_DIR}/shaders/*.frag"
-  "${PROJECT_SOURCE_DIR}/shaders/*.vert"
-)
-
-foreach(GLSL ${GLSL_SOURCE_FILES})
-  get_filename_component(FILE_NAME ${GLSL} NAME)
-  set(SPIRV "${PROJECT_SOURCE_DIR}/shaders/${FILE_NAME}.spv")
-  add_custom_command(
-    OUTPUT ${SPIRV}
-    COMMAND ${GLSL_VALIDATOR} -V ${GLSL} -o ${SPIRV}
-    DEPENDS ${GLSL})
-  list(APPEND SPIRV_BINARY_FILES ${SPIRV})
-endforeach(GLSL)
-
-add_custom_target(
-    Shaders
-    DEPENDS ${SPIRV_BINARY_FILES}
+target_link_libraries(${PROJECT_NAME}
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets
 )
