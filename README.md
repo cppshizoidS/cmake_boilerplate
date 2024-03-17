@@ -7,7 +7,9 @@ Structure:
 ├── .github/workflows
 ├── docs
 │   └── CMakeLists.txt
-│   └── Doxyfile.in  
+│   └── Doxyfile.in
+├── img
+│   └── *.jpg/png
 ├── include
 │   └── *.hpp
 ├── lib
@@ -16,8 +18,8 @@ Structure:
 |   ├── src
 |       └── *.cpp
 |   └── CMakeLists.txt
-│── shaders(for graphics project)
-│   └── *.frag/.vert
+│── res
+│   └── *.qrc
 ├── src
 │   └── *.cpp
 ├── .clang-format
