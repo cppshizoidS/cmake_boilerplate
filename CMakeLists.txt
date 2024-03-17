@@ -46,6 +46,7 @@ find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
+        Quick
         REQUIRED)
 
 # qml and images
@@ -58,8 +59,8 @@ qt_add_qml_module(myapp
 )
 
 #Target Configurations
-file(GLOB SOURCE_FILE src/*.cpp)
-add_executable(${PROJECT_NAME} ${SOURCE_FILE} app.qrc)
+file(GLOB SOURCE_FILE src/*.cpp res/*.qrc)
+add_executable(${PROJECT_NAME} ${SOURCE_FILE})
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 
@@ -72,4 +73,5 @@ target_link_libraries(${PROJECT_NAME}
         Qt::Core
         Qt::Gui
         Qt::Widgets
+        Qt::Quick
 )

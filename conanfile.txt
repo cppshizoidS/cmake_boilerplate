@@ -6,21 +6,7 @@ CMakeToolchain
 cmake/3.22.6
 
 [requires]
-boost/1.84.0
+qt/6.6.2
 doxygen/1.9.4
 fmt/10.2.1
 gtest/1.14.0
-poco/1.13.2
-
-drogon/1.9.2
-crowcpp-crow/1.1.0
-
-glad/0.1.36
-glew/2.2.0
-glfw/3.4
-glm/cci.20230113
-imgui/cci.20230105+1.89.2.docking
-vulkan-headers/1.3.268.0
-tinyobjloader/2.0.0
-
-openal/1.22.2
