@@ -3,7 +3,6 @@
 Structure:
 
 ```sh
-.
 ├── .github/workflows
 ├── docs
 │   └── CMakeLists.txt
@@ -20,6 +19,9 @@ Structure:
 │   └── *.frag/.vert
 ├── src
 │   └── *.cpp
+├── test
+│   └── CMakeLists.txt
+│   └── test_*.cpp
 ├── .clang-format
 ├── .gitignore
 ├── CMakeLists.txt
