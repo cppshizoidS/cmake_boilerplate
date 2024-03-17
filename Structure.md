@@ -17,6 +17,9 @@
 │   └── *.qrc
 ├── src
 │   └── *.cpp
+├── test
+│   └── CMakeLists.txt
+│   └── test_*.cpp
 ├── .clang-format
 ├── .gitignore
 ├── CMakeLists.txt
