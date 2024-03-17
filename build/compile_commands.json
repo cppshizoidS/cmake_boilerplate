@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/*/*/*/*/*/*/*",
-  "command": "/usr/lib64/ccache/c++ -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/CXX.dir/*.cpp.o -c /home/*/*/*/*/*/*/*/*.cpp",
-  "file": "/home/*/*/*/*/*/*/*/*/*/*.cpp",
-  "output": "CMakeFiles/CXX.dir/*.cpp.o"
-}
-]

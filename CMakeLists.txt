@@ -21,18 +21,18 @@ endif()
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
+  target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
 endif()
 
 # release
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    include(CheckIPOSupported)
-    check_ipo_supported(RESULT result)
-    if(result)
-        set_target_properties(${PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-    else()
-        message(WARNING "IPO is not supported: ${result}")
-    endif()
+  include(CheckIPOSupported)
+  check_ipo_supported(RESULT result)
+  if(result)
+    set_target_properties(${PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
+  else()
+    message(WARNING "IPO is not supported: ${result}")
+  endif()
 endif()
 
 #  Functions
@@ -79,6 +79,12 @@ target_link_libraries(${PROJECT_NAME} imgui::imgui)
 #  target_link_libraries(${PROJECT_NAME} boost::system)
 #endif()
 
+#Test
+include(CTest)
+enable_testing()
+add_subdirectory(test)
+
+find_package(GTest REQUIRED)
 
 #Use in graphics projects
 ############## Build SHADERS #######################
