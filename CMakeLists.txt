@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.26)
 project(${PROJECT_NAME} LANGUAGES CXX) #change ${PROJECT_NAME} to actual projet name only in project()
-
+# standart
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+#nvim/vscode
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #lld
 set(CMAKE_EXE_LINKER_FLAGS -fuse-ld=lld)
-
+# include what you use
 find_program(IWYU_PROGRAM NAMES include-what-you-use) # https://github.com/include-what-you-use/include-what-you-use
 if(IWYU_PROGRAM)
   set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PROGRAM})
@@ -60,7 +60,7 @@ file(GLOB SOURCE_FILE src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILE})
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-
+# add lib dir
 add_subdirectory(lib)
 
 # Link  main project with the library
