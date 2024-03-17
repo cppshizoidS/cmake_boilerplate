@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>img/earth.jpg</file>
+        <file>src/main.qml</file>
     </qresource>
 </RCC>
