@@ -24,3 +24,5 @@ vulkan-headers/1.3.268.0
 tinyobjloader/2.0.0
 
 openal/1.22.2
+
+ctre/3.8.1
