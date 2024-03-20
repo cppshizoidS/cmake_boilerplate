@@ -54,6 +54,8 @@ find_package(glfw3)
 find_package(glm)
 find_package(glew)
 find_package(imgui)
+#regex
+find_package(ctre REQUIRED)
 
 #Target Configurations
 file(GLOB SOURCE_FILE src/*.cpp)
@@ -70,6 +72,7 @@ target_link_libraries(${PROJECT_NAME} glm::glm)
 target_link_libraries(${PROJECT_NAME} glfw)
 target_link_libraries(${PROJECT_NAME} GLEW::GLEW)
 target_link_libraries(${PROJECT_NAME} imgui::imgui)
+target_link_libraries(${PROJECT_NAME} ctre::ctre)
 
 # boost
 #if(NOT WIN32)
