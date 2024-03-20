@@ -54,6 +54,8 @@ find_package(glfw3)
 find_package(glm)
 find_package(glew)
 find_package(imgui)
+#sfml
+find_package(SFML COMPONENTS graphics window system)
 #regex
 find_package(ctre REQUIRED)
 
@@ -67,12 +69,21 @@ add_subdirectory(lib)
 
 # Link  main project with the library
 target_link_libraries(${PROJECT_NAME} lib)
-# Link libs with target
+# Link libs with target glm
 target_link_libraries(${PROJECT_NAME} glm::glm)
+# glfw
 target_link_libraries(${PROJECT_NAME} glfw)
+# glew
 target_link_libraries(${PROJECT_NAME} GLEW::GLEW)
+# imgui
 target_link_libraries(${PROJECT_NAME} imgui::imgui)
+# crte
 target_link_libraries(${PROJECT_NAME} ctre::ctre)
+# sfml
+target_link_libraries(${PROJECT_NAME} sfml-graphics)
+target_link_libraries(${PROJECT_NAME} sfml-window)
+target_link_libraries(${PROJECT_NAME} sfml-system)
+
 
 # boost
 #if(NOT WIN32)
