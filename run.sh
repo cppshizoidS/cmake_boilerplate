@@ -7,7 +7,7 @@ elif [ -x "$(command -v dnf)" ]; then
 elif [ -x "$(command -v pacman)" ]; then
     sudo pacman -Syyu -noconfirm base-devel neofetch neovim lua git clang compiler-rt gcc cmake ninja make lld lldb valgrind gtest qt5-base qt5-multimedia qt5-quick3d qt6-tools qt6-quick3d qt6-multimedia glfw glew glm vulkan-extra-layers vulkan-extra-tools vulkan-headers vulkan-tools vulkan-validation-layers spirv-llvm-translator
 elif [ -x "$(command -v brew)" ]; then
-    brew install xcodebuild neofetch neovim python3  git clang cmake ninja make lld lldb valgrind qt5  qt6 glfw glew glm vulkan-headers vulkan-loader vulkan-tools vulkan-extenstionlayer vulkan-validationlayer spirv-cross spirv-headers spirv-llvm-translator xcode-build-server
+    brew install xcodebuild neofetch neovim python3  git clang cmake ninja make lld lldb valgrind qt5  qt6 glfw glew glm vulkan-headers vulkan-loader vulkan-tools vulkan-extenstionlayer vulkan-validationlayer spirv-cross spirv-headers spirv-llvm-translator xcode-build-server googletest
 else
     echo "Не удалось определить дистрибутив и установщик пакетов."
     exit 1
