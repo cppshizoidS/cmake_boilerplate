@@ -9,6 +9,7 @@ cmake/3.22.6
 boost/1.84.0
 doxygen/1.9.4
 fmt/10.2.1
+scnlib/2.0.2
 gtest/1.14.0
 poco/1.13.2
 
