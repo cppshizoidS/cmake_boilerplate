@@ -48,6 +48,11 @@ endfunction()
 
 
 # Find Packages conan
+#fmt until all compilers will support C++20 fmt
+find_package(fmt)
+# alternative for cin(C++ streams) and scanf(C std non typesafe func)
+find_package(scnlib)
+#boost
 find_package(Boost)
 #graphics
 find_package(glfw3)
