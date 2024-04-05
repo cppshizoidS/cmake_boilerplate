@@ -48,7 +48,7 @@ endfunction()
 
 
 # Find Packages conan
-#fmt until all compilers will support C++20 fmt
+#fmt until all compilers will support C++20 format and C++23 print
 find_package(fmt)
 # alternative for cin(C++ streams) and scanf(C std non typesafe func)
 find_package(scnlib)
@@ -59,15 +59,16 @@ find_package(glfw3)
 find_package(glm)
 find_package(glew)
 find_package(imgui)
-#sfml
-find_package(SFML COMPONENTS graphics window system)
 #regex
 find_package(ctre REQUIRED)
+#sfml
+find_package(SFML)
+
 
 #Target Configurations
 file(GLOB SOURCE_FILE src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILE})
-
+# Include headers dir
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 # add lib dir
 add_subdirectory(lib)
@@ -85,9 +86,7 @@ target_link_libraries(${PROJECT_NAME} imgui::imgui)
 # crte
 target_link_libraries(${PROJECT_NAME} ctre::ctre)
 # sfml
-target_link_libraries(${PROJECT_NAME} sfml-graphics)
-target_link_libraries(${PROJECT_NAME} sfml-window)
-target_link_libraries(${PROJECT_NAME} sfml-system)
+target_link_libraries(${PROJECT_NAME} sfml::sfml)
 
 
 # boost
