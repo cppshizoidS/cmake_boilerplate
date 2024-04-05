@@ -1,5 +1,6 @@
 ```sh
 ├── .github/workflows
+├── build(contains generation from cmake(ninja.build) and also contains compile_commands.json
 ├── docs
 │   └── CMakeLists.txt
 │   └── Doxyfile.in  
