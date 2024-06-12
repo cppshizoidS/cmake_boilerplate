@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #lld
-set(CMAKE_EXE_LINKER_FLAGS -fuse-ld=lld)
+set(CMAKE_EXE_LINKER_FLAGS -fuse-ld=mold)
 # include what you use
 find_program(IWYU_PROGRAM NAMES include-what-you-use) # https://github.com/include-what-you-use/include-what-you-use
 if(IWYU_PROGRAM)
