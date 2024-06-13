@@ -78,6 +78,8 @@ find_package(imgui)
 find_package(ctre REQUIRED)
 #sfml
 find_package(SFML)
+#poco
+find_package(Poco REQUIRED Data Net Util XML)
 
 
 #Target Configurations
@@ -102,6 +104,8 @@ target_link_libraries(${PROJECT_NAME} imgui::imgui)
 target_link_libraries(${PROJECT_NAME} ctre::ctre)
 # sfml
 target_link_libraries(${PROJECT_NAME} sfml::sfml)
+# poco
+target_link_libraries(${PROJECT_NAME} Poco::Data Poco::Net Poco::Util Poco::XML)
 
 
 # boost
