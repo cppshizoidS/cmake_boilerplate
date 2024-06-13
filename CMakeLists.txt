@@ -5,9 +5,16 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #nvim/vscode
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# configurations
+set(CMAKE_CONFIGURATION_TYPES
+    "Debug;Release;RelWithDebInfo;MinSizeRel"
+    CACHE STRING "" FORCE)
 
 #lld
 set(CMAKE_EXE_LINKER_FLAGS -fuse-ld=mold)
+#lto
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE)
+
 # include what you use
 find_program(IWYU_PROGRAM NAMES include-what-you-use) # https://github.com/include-what-you-use/include-what-you-use
 if(IWYU_PROGRAM)
@@ -18,6 +25,14 @@ endif()
 if (DOCS)
   add_subdirectory(docs)
 endif()
+
+# caching on ci
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM)
+  set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ${CCACHE_PROGRAM})
+  set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ${CCACHE_PROGRAM})
+endif()
+
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -96,6 +111,23 @@ target_link_libraries(${PROJECT_NAME} sfml::sfml)
 # Windows WIN32 API
 #  target_link_libraries(${PROJECT_NAME} boost::system)
 #endif()
+
+# format and linters
+find_program(CLANG_FORMAT "clang-format")
+if(CLANG_FORMAT)
+  add_custom_target(format COMMAND ${CLANG_FORMAT} -i ${SOURCE_FILES})
+endif()
+
+find_program(CLANG_TIDY "clang-tidy")
+if(CLANG_TIDY)
+  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
+endif()
+
+find_program(CPPCHECK "cppcheck")
+if(CPPCHECK)
+  set(CMAKE_CXX_CPPCHECK "${CPPCHECK}")
+endif()
+
 
 #Test
 include(CTest)
