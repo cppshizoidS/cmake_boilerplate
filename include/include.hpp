@@ -1,4 +1,4 @@
 #ifndef INCLUDE
 #define INCLUDE
 
-#endif // !INCLUDE
+#endif  // !INCLUDE
