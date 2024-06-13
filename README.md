@@ -36,7 +36,19 @@ I use [conan](https://conan.io/) for pm, [cmake](https://cmake.org/) for generat
 GTest for Unit Test and Ctest for running tests. It can be used for graphics project.
 
 ---
-This template contains a script to install everything you need
+This template contains everything you need:
+* Ready CMakeLists.txt
+* conanfile
+* script for install all needed packages
+* github.ci
+* .gitignore
+* clang-foramt
+* setuped doxygen
+* caching on ci
+* IWYU
+* setuped CTest and GTest
+* shader build script
+* different configurations: debug, release...
 
 ### Build Debug
 
