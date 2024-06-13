@@ -124,7 +124,7 @@ endif()
 
 find_program(CLANG_TIDY "clang-tidy")
 if(CLANG_TIDY)
-  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
+  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY};-checks=*,-clang-analyzer-alpha*,-llvm-header-guard")
 endif()
 
 find_program(CPPCHECK "cppcheck")

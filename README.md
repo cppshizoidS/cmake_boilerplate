@@ -37,3 +37,36 @@ GTest for Unit Test and Ctest for running tests. It can be used for graphics pro
 
 ---
 This template contains a script to install everything you need
+
+### Build Debug
+
+```sh
+mkdir -p build/debug
+cd build/debug
+cmake -DCMAKE_BUILD_TYPE=Debug ../..
+cmake --build .
+```
+
+### Build Release:
+```sh
+mkdir -p build/release
+cd build/release
+cmake -DCMAKE_BUILD_TYPE=Release ../..
+cmake --build .
+```
+
+### Build RelWithDebugInfo
+```sh
+mkdir -p build/relwithdebinfo
+cd build/relwithdebinfo
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ../..
+cmake --build .
+```
+
+### Build MinSizeRel
+```sh
+mkdir -p build/minsizerel
+cd build/minsizerel
+cmake -DCMAKE_BUILD_TYPE=MinSizeRel ../..
+cmake --build .
+```
