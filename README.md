@@ -40,7 +40,7 @@ This template contains everything you need:
 * Ready CMakeLists.txt
 * conanfile
 * script for install all needed packages(for debain based, fedora, arch based & macos)
-* github.ci
+* github.ci(ci drops in this repo because it used many packages and some conflicts, pick packages what you need)
 * .gitignore
 * clang-foramt
 * setuped doxygen
