@@ -39,12 +39,13 @@ GTest for Unit Test and Ctest for running tests. It can be used for graphics pro
 This template contains everything you need:
 * Ready CMakeLists.txt
 * conanfile
-* script for install all needed packages
+* script for install all needed packages(for debain based, fedora, arch based & macos)
 * github.ci
 * .gitignore
 * clang-foramt
 * setuped doxygen
 * caching on ci
+* basic setup for nvim zsh OMZ
 * IWYU
 * setuped CTest and GTest
 * shader build script
