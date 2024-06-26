@@ -5,6 +5,7 @@ Structure:
 ```sh
 ├── .github/workflows
 │   └── build_cmake.yml
+├── build(contains generation from cmake(ninja.build) and also contains compile_commands.json
 ├── docs
 │   └── CMakeLists.txt
 │   └── Doxyfile.in  
@@ -28,6 +29,7 @@ Structure:
 ├── CMakeLists.txt
 ├── compile_commands.json -> build/compile_commands.json(for clangd in nvim/vsc)
 ├── conanfile.txt
+├── Dockerfile
 ├── LICENSE
 └── README.md
 ```
@@ -50,6 +52,7 @@ This template contains everything you need:
 * setuped CTest and GTest
 * shader build script
 * different configurations: debug, release...
+* docker setup
 
 ### Build Debug
 
