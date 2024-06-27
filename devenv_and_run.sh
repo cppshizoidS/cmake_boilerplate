@@ -3,7 +3,7 @@ if [ -x "$(command -v apt-get)" ]; then
     sudo add-apt-repository contrib
     sudo add-apt-repository non-free
     sudo apt-get update
-    sudo apt-get install -y zsh build-essential neofetch git clang clang-tools mold clang-format gcc cmake ninja-build lld lldb valgrind libgtest-dev python3-pip doxygen neovim qt5-default qtbase5-dev qt6-base-dev libglfw3 libglfw3-dev glew-utils libglew-dev libglm-dev libvulkan1 vulkan-validationlayers glslang-dev spirv-tools spirv-cross libsfml-dev
+    sudo apt-get install -y zsh build-essential neofetch git clang clang-tools mold clang-format gcc cmake ninja-build lld lldb valgrind libgtest-dev python3-pip doxygen neovim qtbase5-dev qt6-base-dev libglfw3 libglfw3-dev glew-utils libglew-dev libglm-dev libvulkan1 vulkan-validationlayers glslang-dev spirv-tools spirv-cross libsfml-dev
 elif [ -x "$(command -v dnf)" ]; then
     sudo dnf install -y dnf5
     sudo dnf5 install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
