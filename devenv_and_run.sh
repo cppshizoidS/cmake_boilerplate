@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ -x "$(command -v apt-get)" ]; then
     sudo apt-get update
-    sudo apt-get install -y zsh build-essential neofetch git clang clang-tools mold clang-format gcc cmake ninja-build lld lldb valgrind gtest python3-pip doxygen neovim qt5-default qtbase5-dev qt6-base-dev qt6-base glfw glew libglm-dev glew-utils libglew-dev libvulkan1 vulkan-validationlayers vulkan-loader glslang-dev spirv-tools libsfml-dev sfml
+    sudo apt-get install -y zsh build-essential neofetch git clang clang-tools mold clang-format gcc cmake ninja-build lld lldb valgrind libgtest-dev python3-pip doxygen neovim qt5-default qtbase5-dev qt6-base-dev qt6-base glfw glew-utils libglew-dev libglm-dev libvulkan1 vulkan-validationlayers glslang-dev spirv-tools libsfml-dev
 elif [ -x "$(command -v dnf)" ]; then
     sudo dnf install -y dnf5
     sudo dnf5 install -y zsh @development-tools neofetch git clang clang-tools-extra mold gcc cmake ninja-build lld lldb valgrind python3 python3-pip gtest doxygen neovim SFML SFML-devel qt5-qtbase-devel qt5-qtbase qt6-core qt6-qtbase qt6-qtbase-devel qt6-qtmultimedia glfw glm-devel glew vulkan-headers vulkan-loader vulkan-tools vulkan-volk-devel glslang spirv-tools spirv-llvm-translator
