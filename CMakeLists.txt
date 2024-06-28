@@ -75,48 +75,52 @@ endfunction()
 
 # Find Packages conan
 #fmt until all compilers will support C++20 format and C++23 print
-find_package(fmt)
+find_package(fmt CONFIG REQUIRED)
 # alternative for cin(C++ streams) and scanf(C std non typesafe func)
-find_package(scnlib)
+find_package(scnlib CONFIG REQUIRED)
 #boost
-find_package(Boost)
+find_package(Boost CONFIG REQUIRED)
 #graphics
-find_package(glfw3)
-find_package(glm)
-find_package(glew)
-find_package(imgui)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(glew CONFIG REQUIRED)
+find_package(imgui CONFIG REQUIRED)
 #regex
-find_package(ctre REQUIRED)
+find_package(ctre CONFIG REQUIRED)
 #sfml
-find_package(SFML)
+find_package(SFML CONFIG REQUIRED)
 #poco
-find_package(Poco REQUIRED Data Net Util XML)
+find_package(Poco CONFIG REQUIRED Data Net Util XML)
 
 
 # Link  main project with the library
 target_link_libraries(${PROJECT_NAME} lib)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+target_link_libraries(${PROJECT_NAME} PRIVATE scnlib::scnlib)
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::boost)
 # Link libs with target glm
-target_link_libraries(${PROJECT_NAME} glm::glm)
+target_link_libraries(${PROJECT_NAME} PRIVATE glm)
 # glfw
-target_link_libraries(${PROJECT_NAME} glfw)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 # glew
-target_link_libraries(${PROJECT_NAME} GLEW::GLEW)
+target_link_libraries(${PROJECT_NAME} PRIVATE GLEW::GLEW)
 # imgui
-target_link_libraries(${PROJECT_NAME} imgui::imgui)
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 # crte
-target_link_libraries(${PROJECT_NAME} ctre::ctre)
+target_link_libraries(${PROJECT_NAME} PRIVATE ctre::ctre)
 # sfml
-target_link_libraries(${PROJECT_NAME} sfml::sfml)
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml::sfml)
 # poco
-target_link_libraries(${PROJECT_NAME} Poco::Data Poco::Net Poco::Util Poco::XML)
+target_link_libraries(${PROJECT_NAME} PRIVATE Poco::Data Poco::Net Poco::Util Poco::XML)
 
 
 # boost
 #if(NOT WIN32)
-  target_link_libraries(${PROJECT_NAME} boost::system pthread)
+  target_link_libraries(${PROJECT_NAME} PRIVATE boost::system pthread)
 #else()
 # Windows WIN32 API
- target_link_libraries(${PROJECT_NAME} boost::system)
+ target_link_libraries(${PROJECT_NAME} PRIVATE boost::system)
 #endif()
 
 # format and linters
