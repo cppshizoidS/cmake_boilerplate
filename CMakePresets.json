@@ -7,6 +7,10 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "environment": {
+                "VCPKG_FEATURE_FLAGS": "manifests,versions,binarycaching,registries"
+            },
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang-cl.exe",
                 "CMAKE_CXX_COMPILER": "clang-cl.exe"
