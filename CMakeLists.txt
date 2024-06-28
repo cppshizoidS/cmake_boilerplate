@@ -33,6 +33,13 @@ if(CCACHE_PROGRAM)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ${CCACHE_PROGRAM})
 endif()
 
+#Target Configurations
+file(GLOB SOURCE_FILE src/*.cpp)
+add_executable(${PROJECT_NAME} ${SOURCE_FILE})
+# Include headers dir
+target_include_directories(${PROJECT_NAME} PRIVATE include)
+# add lib dir
+add_subdirectory(lib)
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -81,14 +88,6 @@ find_package(SFML)
 #poco
 find_package(Poco REQUIRED Data Net Util XML)
 
-
-#Target Configurations
-file(GLOB SOURCE_FILE src/*.cpp)
-add_executable(${PROJECT_NAME} ${SOURCE_FILE})
-# Include headers dir
-target_include_directories(${PROJECT_NAME} PRIVATE include)
-# add lib dir
-add_subdirectory(lib)
 
 # Link  main project with the library
 target_link_libraries(${PROJECT_NAME} lib)
