@@ -1,4 +1,4 @@
-name: C++ CI/CD with Conan
+name: C++ CI/CD with vcpkg
 
 on:
   push:
@@ -17,26 +17,27 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install Conan
+    - name: Install vcpkg
       run: |
-        pip install conan
-        conan --version
+        git clone https://github.com/microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.sh
 
-    - name: Install dependencies with Conan
+    - name: Install dependencies with vcpkg
       run: |
-        conan profile detect
-        conan install .
+        ./vcpkg/vcpkg install <package1> <package2> ...  # List your packages here
+        ./vcpkg/vcpkg integrate install
 
     - name: Configure and build
       run: |
         mkdir build && cd build
-        cmake ..
-        cmake --build . --update --build missing
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake
+        cmake --build . --config Release
 
     - name: Run tests
       run: |
         ctest
-        
+
     - name: Check codestyle
       run: |
         echo "Check codestyle..."
@@ -53,20 +54,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install Conan
+    - name: Install vcpkg
       run: |
-        pip install conan
-        conan --version
+        git clone https://github.com/microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.sh
 
-    - name: Install dependencies with Conan
+    - name: Install dependencies with vcpkg
       run: |
-        conan install . --update --build missing
+        ./vcpkg/vcpkg install <package1> <package2> ...  # List your packages here
+        ./vcpkg/vcpkg integrate install
 
     - name: Configure and build
       run: |
         mkdir build && cd build
-        cmake ..
-        cmake --build .
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake
+        cmake --build . --config Release
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
