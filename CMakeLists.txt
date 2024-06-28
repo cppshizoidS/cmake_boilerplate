@@ -43,11 +43,7 @@ add_subdirectory(lib)
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-  if (MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /Od /Ob0 /Wall /sdl /Zi /fsanitize=address /GS /RTC1 #dll /MDd)
-  else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
-  endif()
 endif()
 
 # release
