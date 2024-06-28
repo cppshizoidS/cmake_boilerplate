@@ -43,7 +43,11 @@ add_subdirectory(lib)
 
 #debug
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-  target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
+  if (MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /Od /Wall /sdl /Zi /fsanitize=address /GZ /RTC1)
+  else()
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -fsanitize=address -fsanitize=undefined -fsanitize=thread -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g)
+  endif()
 endif()
 
 # release
@@ -109,10 +113,10 @@ target_link_libraries(${PROJECT_NAME} Poco::Data Poco::Net Poco::Util Poco::XML)
 
 # boost
 #if(NOT WIN32)
-#  target_link_libraries(${PROJECT_NAME} boost::system pthread)
+  target_link_libraries(${PROJECT_NAME} boost::system pthread)
 #else()
 # Windows WIN32 API
-#  target_link_libraries(${PROJECT_NAME} boost::system)
+ target_link_libraries(${PROJECT_NAME} boost::system)
 #endif()
 
 # format and linters
