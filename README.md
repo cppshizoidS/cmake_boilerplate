@@ -27,7 +27,6 @@ Structure:
 ├── .clang-format
 ├── .gitignore
 ├── CMakeLists.txt
-├── CMakePresets.json (for Visual studio)
 ├── compile_commands.json -> build/compile_commands.json(for clangd in nvim/vsc)
 ├── conanfile.txt
 ├── Dockerfile
