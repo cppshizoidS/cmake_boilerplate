@@ -29,19 +29,17 @@ Structure:
 ├── CMakeLists.txt
 ├── CMakePresets.json (for Visual studio)
 ├── compile_commands.json -> build/compile_commands.json(for clangd in nvim/vsc)
-├── conanfile.txt
 ├── Dockerfile
 ├── LICENSE
 └── README.md
 ```
 
-I use [conan](https://conan.io/) for pm(in linux) [vcpkg](https://vcpkg.io/en/index.html) for pm(in windows), [cmake](https://cmake.org/) for generator files for [ninja-build](https://ninja-build.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for format and [doxygen](https://www.doxygen.nl/manual/index.html) for generate docs.
+I use  [vcpkg](https://vcpkg.io/en/index.html) for pm, [cmake](https://cmake.org/) for generator files for [ninja-build](https://ninja-build.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for format and [doxygen](https://www.doxygen.nl/manual/index.html) for generate docs.
 GTest for Unit Test and Ctest for running tests. It can be used for graphics project.
 
 ---
 This template contains everything you need:
 * Ready CMakeLists.txt
-* conanfile
 * script for install all needed packages(for debain based, fedora, arch based & macos)
 * github.ci(ci drops in this repo because it used many packages and some conflicts, pick packages what you need)
 * .gitignore
