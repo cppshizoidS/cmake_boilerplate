@@ -52,6 +52,7 @@ This template contains everything you need:
 * setuped CTest and GTest
 * shader build script
 * different configurations: debug, release...
+* debug configs enable flags for most checks for compilers (clang/gcc and msvc)
 * docker setup
 
 ### Build Debug
