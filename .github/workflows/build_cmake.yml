@@ -28,6 +28,22 @@ jobs:
         ./vcpkg/vcpkg install <package1> <package2> ...  # List your packages here
         ./vcpkg/vcpkg integrate install
 
+    - name: Check code style with clang-format
+      run: |
+        sudo apt-get install -y clang-format
+        echo "Checking code style with clang-format..."
+        SOURCE_FILES=$(find src include -name '*.cpp' -o -name '*.hpp' -o -name '*.h' -o -name '*.cppm' -o -name '*.ixx')
+        clang-format -i --verbose $SOURCE_FILES
+        git diff --exit-code
+
+    - name: Run clang-tidy
+      run: |
+        sudo apt-get install -y clang-tidy
+        echo "Running clang-tidy..."
+        SOURCE_FILES=$(find src include -name '*.cpp' -o -name '*.hpp' -o -name '*.h' -o -name '*.cppm' -o -name '*.ixx')
+        clang-tidy $SOURCE_FILES -- -std=c++23
+        echo "clang-tidy checks are complete."
+
     - name: Configure and build
       run: |
         mkdir build && cd build
@@ -37,12 +53,6 @@ jobs:
     - name: Run tests
       run: |
         ctest
-
-    - name: Check codestyle
-      run: |
-        echo "Check codestyle..."
-        git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
-        echo "Codestyle is fine."
 
   deploy:
     name: Deploy
