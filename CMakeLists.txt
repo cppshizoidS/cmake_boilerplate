@@ -123,21 +123,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Poco::Data Poco::Net Poco::Util Po
  target_link_libraries(${PROJECT_NAME} PRIVATE boost::system)
 #endif()
 
-# format and linters
-find_program(CLANG_FORMAT "clang-format")
-if(CLANG_FORMAT)
-  add_custom_target(format COMMAND ${CLANG_FORMAT} -i ${SOURCE_FILES})
-endif()
-
-find_program(CLANG_TIDY "clang-tidy")
-if(CLANG_TIDY)
-  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY};-checks=*,-clang-analyzer-alpha*,-llvm-header-guard")
-endif()
-
-find_program(CPPCHECK "cppcheck")
-if(CPPCHECK)
-  set(CMAKE_CXX_CPPCHECK "${CPPCHECK}")
-endif()
 
 
 #Test
