@@ -28,6 +28,7 @@ Structure:
 ├── .gitignore
 ├── CMakeLists.txt
 ├── CMakePresets.json (for Visual studio)
+├── vcpkg.json
 ├── compile_commands.json -> build/compile_commands.json(for clangd in nvim/vsc)
 ├── Dockerfile
 ├── LICENSE
