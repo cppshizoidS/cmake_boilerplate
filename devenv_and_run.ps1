@@ -6,17 +6,58 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 }
 
 # Install packages
-choco install -y git cmake ninja llvm clang gcc neovim doxygen sfml qt5-sdk qt6-sdk glfw glew glm vulkan-sdk python3 python3-pip
+choco install -y git cmake ninja llvm clang gcc neovim doxygen sfml qt5-sdk qt6-sdk glfw glew glm vulkan-sdk python3 python3-pip valgrind oh-my-posh
+
+$fontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip"
+$fontZipPath = "$HOME\Downloads\CascadiaCode.zip"
+$fontExtractPath = "$HOME\Downloads\CascadiaCode"
+
+Invoke-WebRequest -Uri $fontUrl -OutFile $fontZipPath
+Expand-Archive -Path $fontZipPath -DestinationPath $fontExtractPath
+$fontFiles = Get-ChildItem -Path $fontExtractPath -Filter "*.ttf"
+
+foreach ($fontFile in $fontFiles) {
+    $shell = New-Object -ComObject Shell.Application
+    $shell.Namespace(0x14).ParseName($fontFile.FullName).InvokeVerb("Install")
+}
+
+$profileContent = @"
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/agnoster.omp.json" | Invoke-Expression
+
+Set-Alias vim nvim
+Set-Alias nv nvim
+
+function Edit-Profile {
+    nvim \$PROFILE
+}
+
+function Reload-Profile {
+    & \$PROFILE
+}
+
+if (Test-Path \$PROFILE) {
+    . \$PROFILE
+}
+"@
+
+# Запись в профиль PowerShell
+$profilePath = "$PROFILE"
+New-Item -ItemType File -Force -Path $profilePath
+$profileContent | Out-File -FilePath $profilePath -Encoding utf8
+
+# Установить и настроить posh-git и oh-my-posh
+Install-Module posh-git -Scope CurrentUser -Force
+Install-Module oh-my-posh -Scope CurrentUser -Force
 
 # Setup vcpkg
-cd $HOME
+Set-Location $HOME
 if (-not (Test-Path -Path "$HOME\vcpkg")) {
     git clone https://github.com/microsoft/vcpkg.git
 }
-cd vcpkg
+Set-Location vcpkg
 .\bootstrap-vcpkg.bat
 .\vcpkg integrate install
-cd ..
+Set-Location ..
 
 # Save the current directory
 $BASEDIR = Get-Location
@@ -80,8 +121,8 @@ if (Test-Path -Path "$BASEDIR\build") {
     Remove-Item -Recurse -Force build
 }
 
-mkdir build
-cd build
+New-Item -ItemType Directory -Force -Path "build"
+Set-Location build
 
 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$BASEDIR\vcpkg\scripts\buildsystems\vcpkg.cmake
 cmake --build .
