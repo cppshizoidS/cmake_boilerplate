@@ -1,0 +1,17 @@
+{
+  "name": "myproject",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "fmt",
+    "scnlib",
+    "boost",
+    "glfw3",
+    "glm",
+    "glew",
+    "imgui",
+    "ctre",
+    "sfml",
+    "poco",
+    "gtest"
+  ]
+}
