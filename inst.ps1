@@ -6,7 +6,7 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 }
 
 # Install packages
-choco install -y git cmake ninja llvm clang gcc neovim doxygen sfml qt5-sdk qt6-sdk glfw glew glm vulkan-sdk python3 python3-pip valgrind
+choco install -y git cmake ninja llvm clang gcc neovim doxygen sfml qt5-sdk qt6-sdk glfw glew glm vulkan-sdk python3 python3-pip
 
 # Setup vcpkg
 cd $HOME
