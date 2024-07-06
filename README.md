@@ -46,6 +46,7 @@ This template contains everything you need:
 * .gitignore
 * clang-foramt
 * setuped doxygen
+* setuped vcpkg(vcpkg.json)
 * caching on ci
 * basic setup for nvim zsh OMZ
 * IWYU
