@@ -41,7 +41,7 @@ GTest for Unit Test and Ctest for running tests. It can be used for graphics pro
 ---
 This template contains everything you need:
 * Ready CMakeLists.txt
-* script for install all needed packages(for debain based, fedora, arch based & macos)
+* script for install all needed packages(for debain based, fedora, arch based, macos & windows)
 * github.ci(ci drops in this repo because it used many packages and some conflicts, pick packages what you need)
 * .gitignore
 * clang-foramt
