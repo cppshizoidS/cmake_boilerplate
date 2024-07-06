@@ -33,8 +33,7 @@ Structure:
 ├── LICENSE
 └── README.md
 ```
-I use [conan](https://conan.io/) for pm(in [linux]https://github.com/cppshizoidS/cmake_boilerplate/tree/main
-) [vcpkg](https://vcpkg.io/en/index.html) for pm(in [windows](https://github.com/cppshizoidS/cmake_boilerplate/tree/vcpkg)), [cmake](https://cmake.org/) for generator files for [ninja-build](https://ninja-build.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for format and [doxygen](https://www.doxygen.nl/manual/index.html) for generate docs.
+I use [conan](https://conan.io/) for pm(in [linux]https://github.com/cppshizoidS/cmake_boilerplate/tree/main) [vcpkg](https://vcpkg.io/en/index.html) for pm(in [windows](https://github.com/cppshizoidS/cmake_boilerplate/tree/vcpkg)), [cmake](https://cmake.org/) for generator files for [ninja-build](https://ninja-build.org/), [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for format and [doxygen](https://www.doxygen.nl/manual/index.html) for generate docs.
 GTest for Unit Test and Ctest for running tests. It can be used for graphics project.
 
 ---
