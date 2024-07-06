@@ -73,7 +73,7 @@ function(copy_after_build TARGET_NAME)
 endfunction()
 
 
-# Find Packages conan
+# Find Packages vcpkg
 #fmt until all compilers will support C++20 format and C++23 print
 find_package(fmt CONFIG REQUIRED)
 # alternative for cin(C++ streams) and scanf(C std non typesafe func)
@@ -113,8 +113,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ctre::ctre)
 target_link_libraries(${PROJECT_NAME} PRIVATE sfml::sfml)
 # poco
 target_link_libraries(${PROJECT_NAME} PRIVATE Poco::Data Poco::Net Poco::Util Poco::XML)
-
-
 # boost
 #if(NOT WIN32)
   target_link_libraries(${PROJECT_NAME} PRIVATE boost::system pthread)
@@ -122,8 +120,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Poco::Data Poco::Net Poco::Util Po
 # Windows WIN32 API
  target_link_libraries(${PROJECT_NAME} PRIVATE boost::system)
 #endif()
-
-
 
 #Test
 include(CTest)
