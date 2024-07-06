@@ -18,8 +18,12 @@ else
     exit 1
 fi
 
-
-pip3 install conan
+# Установка и настройка vcpkg
+git clone https://github.com/microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg integrate install
+cd ..
 
 set -e
 set -x
@@ -115,9 +119,9 @@ popd
 
 rm -rf build
 
-conan profile detect --force
-conan install . --output-folder=build --build=missing
+./vcpkg/vcpkg install --manifest .
+
 cd build
-cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release 
+cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=${BASEDIR}/vcpkg/scripts/buildsystems/vcpkg.cmake
 cmake --build .
 ./test
